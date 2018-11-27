@@ -28,11 +28,11 @@ export default class DistrictRepository {
 
   findAllMatches = (userInput) => {
     const districts = Object.keys(this.stats) 
+
     if (!userInput) {
-      const updatedData = districts.map(district => {
-        return {[district]: this.stats[district]}
+     return districts.map(district => {
+        return {location: district, stats: this.stats[district].stats}
       }) 
-      return updatedData
     }
     let upperCasedInput = userInput.toUpperCase(); 
     const matchingDistricts = districts.filter(district => district.includes(upperCasedInput))
