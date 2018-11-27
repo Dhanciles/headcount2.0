@@ -20,8 +20,8 @@ export default class DistrictRepository {
     if (!name) {
       return undefined
     } else {
-      const upperCase = name.toUpperCase(); 
-      const matchingDistrict = districts.find(district => district.includes(upperCase))
+      const upperCasedName = name.toUpperCase(); 
+      const matchingDistrict = districts.find(district => district.includes(upperCasedName))
       return this.stats[matchingDistrict]
     }
 
