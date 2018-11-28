@@ -1,11 +1,12 @@
 import React from 'react'; 
+import PropTypes from 'prop-types'; 
 
 const Card = ({location, stats}) => {
   const statsList = Object.entries(stats)
-  // console.log(statsList)
-  const list = statsList.map(stat => {
-    return <li>{stat[0]}:  {stat[1]}</li>
+  const list = statsList.map(([year, value]) => {
+    return <li>{year}: {value}</li>
   })
+
   return (
     <div className="districtCard">
       <h1>{location}</h1>
@@ -14,4 +15,8 @@ const Card = ({location, stats}) => {
   )
 }
 
+Card.propTypes = {
+  location: PropTypes.string.isRequired, 
+  stats: PropTypes.object.isRequired
+}
 export default Card; 

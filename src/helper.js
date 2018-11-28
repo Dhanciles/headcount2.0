@@ -1,16 +1,18 @@
 export default class DistrictRepository {
   constructor(data) {
-    this.stats = data.reduce((sortedDistricts, district) => {
-      let dataNumber; 
-      if (typeof district.Data === 'string') {
-        dataNumber = 0 
-      } else {
-        dataNumber = parseFloat(district.Data.toFixed(3))
-      }
-      if (!sortedDistricts[district.Location]) {
+    this.stats = this.cleanData(data)
+  }
+
+  cleanData = (data) => {
+    return data.reduce((sortedDistricts, district) => {
+      // const { Data, Location, TimeFrame } = district;
+      let dataNumber = typeof district.Data === 'string' ? 0 : parseFloat(district.Data.toFixed(3))
+  
+      if (!sortedDistricts[district.Location.toUpperCase()]) {
         sortedDistricts[district.Location.toUpperCase()] = {location: district.Location.toUpperCase(), stats: {[district.TimeFrame]: dataNumber}}
       } 
-      sortedDistricts[district.Location.toUpperCase()].stats[district.TimeFrame] = dataNumber
+      sortedDistricts[district.Location.toUpperCase()].stats[district.TimeFrame] = dataNumber 
+
       return sortedDistricts
     }, {})
   }
