@@ -37,7 +37,10 @@ export default class DistrictRepository {
       }) 
     }
     let upperCasedInput = userInput.toUpperCase(); 
-    const matchingDistricts = districts.filter(district => district.includes(upperCasedInput))
+    let matchingDistricts = districts.filter(district => district.includes(upperCasedInput))
+    matchingDistricts = matchingDistricts.map(district => {
+      return {location: district, stats: this.stats[district].stats}
+    })
     return matchingDistricts
   }
 }

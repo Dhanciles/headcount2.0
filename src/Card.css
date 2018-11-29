@@ -1,0 +1,17 @@
+.district-card {
+  box-sizing: border-box; 
+  border: 5px solid #5E6165; 
+  border-radius: 15px;  
+  padding: 8px; 
+  width: 200px; 
+}
+
+h1 {
+  text-align: center; 
+  overflow-wrap: break-word; 
+}
+
+li {
+  text-align: center; 
+  list-style: none; 
+}
