@@ -28,7 +28,9 @@ class App extends Component {
       <div>
         <h1>Welcome To Headcount 2.0</h1>
         <Search displayFilteredDistricts={this.displayFilteredDistricts}/>
-        <CardContainer findAllMatches={findAllMatches}/>
+        <CardContainer 
+        findAllMatches={findAllMatches} 
+        filteredDistricts={this.state.filteredDistricts}/>
       </div>
 
     );

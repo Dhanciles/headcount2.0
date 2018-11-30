@@ -1,4 +1,6 @@
 import React, {Component} from 'react'; 
+import PropTypes from 'prop-types'; 
+import './Search.css'; 
 
 class Search extends Component {
   constructor() {
@@ -15,12 +17,15 @@ class Search extends Component {
   }
   render = () => {
     return(
-      <div className="search-input">
+      <div className="search-container">
         <input type="text" value={this.state.district} onChange={this.handleChange}/> 
       </div>
     )
   }
-  
+}
+
+Search.propTypes = {
+  displayFilteredDistricts: PropTypes.func.isRequired
 }
 
 export default Search; 

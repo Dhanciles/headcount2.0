@@ -3,14 +3,25 @@ import './CardContainer.css';
 import Card from './Card.js'; 
 import PropTypes from 'prop-types'; 
 
-const CardContainer = ({findAllMatches}) => {
+const CardContainer = ({findAllMatches, filteredDistricts}) => {
   const data = findAllMatches();
   const allDistricts = data.map(district => (<Card {...district}/>))
-  return (
-    <div className="card-container">
+  const searchedDistricts = filteredDistricts.map(search => (<Card{...search}/>))
+  
+  if (searchedDistricts.length >= 1) {
+    return (
+       <div className="card-container">
+       {searchedDistricts}
+     </div>
+    )
+  } else {
+    return (
+      <div className="card-container">
       {allDistricts}
     </div>
-  )
+    )
+  }
+  
 }
 
 CardContainer.propTypes = {
