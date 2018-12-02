@@ -24,4 +24,15 @@ h1 {
 li {
   text-align: center; 
   list-style: none; 
+  margin: 5px 5px; 
+}
+
+.above {
+  border-radius: 15px; 
+  background-color: #12A73C; 
+}
+
+.below {
+  border-radius: 15px; 
+  background-color: #9A9B9C; 
 }

@@ -9,16 +9,18 @@ class Search extends Component {
       district: ''
     }
   }
+
   handleChange = (e) => {
     this.setState({
       district: e.target.value
     })
     this.props.displayFilteredDistricts(e.target.value)
   }
+  
   render = () => {
     return(
       <div className="search-container">
-        <input type="text" value={this.state.district} onChange={this.handleChange}/> 
+        <input type="text" value={this.state.district} onChange={this.handleChange} placeholder="Search for District"/> 
       </div>
     )
   }

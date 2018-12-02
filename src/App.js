@@ -24,17 +24,11 @@ class App extends Component {
     })
   }
 
-  selectCard = (e) => {
-    
-  }
 
-  // displayComparedDistricts = (district1, district2) => {
-  //   const { compareDistrictAverages } = this.state.repostitory
-  //   const comparedDistricts = compareDistrictAverages(district1, district2)
-  //   this.setState({
-  //     comparedDistricts
-  //   })
-  // }
+  compareDistricts = (location) => {
+    // let currentCards; 
+    console.log(location)
+  }
 
   render() {
     const { findAllMatches } = this.state.repostitory
@@ -45,7 +39,7 @@ class App extends Component {
         <CardContainer 
         findAllMatches={findAllMatches} 
         filteredDistricts={this.state.filteredDistricts}
-        />
+        compareDistricts={this.compareDistricts}/>
       </div>
 
     );
