@@ -12,7 +12,7 @@ class App extends Component {
     this.state = {
       repostitory: new DistrictRepository(kinderData),
       filteredDistricts: [],
-      comparedDistricts: []
+      selectedCards: []
     }
   }
 
@@ -26,8 +26,20 @@ class App extends Component {
 
 
   compareDistricts = (location) => {
-    // let currentCards; 
-    console.log(location)
+    const {findAllMatches} = this.state.repostitory
+    let selectedCards; 
+    const currentCard = findAllMatches(location)
+    if (this.state.selectedCards.length > 1) {
+      selectedCards = this.state.selectedCards.filter(selected => selected.location !== location )
+      this.setState({
+        selectedCards
+      })
+    } else {
+      selectedCards = [...this.state.selectedCards, ...currentCard]
+      this.setState({
+        selectedCards
+      })
+    }
   }
 
   render() {
@@ -39,7 +51,8 @@ class App extends Component {
         <CardContainer 
         findAllMatches={findAllMatches} 
         filteredDistricts={this.state.filteredDistricts}
-        compareDistricts={this.compareDistricts}/>
+        compareDistricts={this.compareDistricts}
+        selectedCards={this.state.selectedCards}/>
       </div>
 
     );
