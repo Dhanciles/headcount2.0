@@ -6,7 +6,7 @@ import ComparisonCard from './ComparisonCard.js';
 const ComparisonContainer = () => {
   return (
     <div>
-      {<ComparisonCard}
+      {<ComparisonCard />}
     </div>
   )
 }

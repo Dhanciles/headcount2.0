@@ -4,6 +4,7 @@
   border-radius: 15px;  
   padding: 8px; 
   width: 200px; 
+  cursor: pointer; 
 }
 
 h1 {

@@ -4,11 +4,9 @@ import Proptypes from 'prop-types';
 const ComparisonCard = () => {
   return (
     <div className="comparison-card">
-      <article>
-        <h1>DISTRICT 1</h1> 
-        <h1>DISTRICT 2</h1>
-      </article>
+      <h1>DISTRICT 1</h1> 
       <p>Returned Comparison</p>
+      <h1>DISTRICT 2</h1>
     </div>
   )
 }
