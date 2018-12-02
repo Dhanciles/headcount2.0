@@ -9,15 +9,21 @@ class Card extends Component {
       selected: false
     }
   }
+
+  selectDistrict = () => {
+    this.setState({
+      selected: !this.state.selected
+    })
+  }
   render() {
     const {location, stats} = this.props
     const statsList = Object.entries(stats)
     const list = statsList.map(([year, value]) => {
       return <li>{year}: {value}</li>
     })
-    
+
     return (
-      <div className="district-card">
+      <div className={ this.state.selected ? 'selected-card' : 'district-card'} onClick={() => this.selectDistrict()}>
         <h1>{location}</h1>
         <ul>{list}</ul>
       </div>
