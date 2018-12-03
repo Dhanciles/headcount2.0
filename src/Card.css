@@ -5,16 +5,11 @@
   padding: 8px; 
   width: 200px; 
   cursor: pointer; 
+  margin: 15px; 
 }
 
 .selected-card {
   background-color: aqua; 
-  box-sizing: border-box; 
-  border: 5px solid #5E6165; 
-  border-radius: 15px;  
-  padding: 8px; 
-  width: 200px; 
-  cursor: pointer; 
 }
 
 h1 {

@@ -11,17 +11,29 @@ class App extends Component {
     super();
     this.state = {
       repostitory: new DistrictRepository(kinderData),
-      filteredDistricts: [],
+      districts: {}, 
       selectedCards: []
     }
   }
 
-  displayFilteredDistricts = (userInput) => {
-    const { findAllMatches } = this.state.repostitory
-    const filteredDistricts = findAllMatches(userInput)
+  componentDidMount = () => {
     this.setState({
-      filteredDistricts
+        districts: this.state.repostitory.stats
     })
+  }
+
+  displayFilteredDistricts = (userInput) => {
+    const { findAllMatches, stats } = this.state.repostitory
+    const filteredDistricts = findAllMatches(userInput);
+    const districtsObj = filteredDistricts.reduce((acc, district) =>  {
+        acc[district.location] = stats[district.location]
+        return acc
+    }, {})
+  
+    this.setState({
+      districts: districtsObj
+    })
+   
   }
 
 
@@ -51,8 +63,8 @@ class App extends Component {
         <h1>Welcome To Headcount 2.0</h1>
         <Search displayFilteredDistricts={this.displayFilteredDistricts}/>
         <CardContainer 
+        districts={this.state.districts}
         findAllMatches={findAllMatches} 
-        filteredDistricts={this.state.filteredDistricts}
         selectDistrict={this.selectDistrict}
         selectedCards={this.state.selectedCards}/>
       </div>
