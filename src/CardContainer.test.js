@@ -3,7 +3,14 @@ import {shallow} from 'enzyme';
 import CardContainer from './CardContainer.js'; 
 
 describe('CardContainer', () => {
+  let wrapper; 
+
   beforeEach(() => {
-    const wrapper = shallow(<CardContainer />)
-  }); 
+     wrapper = shallow(<CardContainer />)
+  })
+
+  test('matches snapshot', () => {
+    
+    expect(wrapper).toMatchSnapshot(); 
+  })
 }); 

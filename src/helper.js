@@ -5,13 +5,13 @@ export default class DistrictRepository {
 
   cleanData = (data) => {
     return data.reduce((sortedDistricts, district) => {
-      // const { Data, Location, TimeFrame } = district;
-      let dataNumber = typeof district.Data === 'string' ? 0 : parseFloat(district.Data.toFixed(3))
+      const { Data, Location, TimeFrame } = district;
+      let dataNumber = typeof Data === 'string' ? 0 : parseFloat(Data.toFixed(3))
   
-      if (!sortedDistricts[district.Location.toUpperCase()]) {
-        sortedDistricts[district.Location.toUpperCase()] = {location: district.Location.toUpperCase(), stats: {[district.TimeFrame]: dataNumber}}
+      if (!sortedDistricts[Location.toUpperCase()]) {
+        sortedDistricts[Location.toUpperCase()] = {location: Location.toUpperCase(), stats: {[TimeFrame]: dataNumber}}
       } 
-      sortedDistricts[district.Location.toUpperCase()].stats[district.TimeFrame] = dataNumber 
+      sortedDistricts[Location.toUpperCase()].stats[TimeFrame] = dataNumber 
 
       return sortedDistricts
     }, {})

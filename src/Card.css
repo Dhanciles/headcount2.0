@@ -6,6 +6,7 @@
   width: 200px; 
   cursor: pointer; 
 }
+
 .selected-card {
   background-color: aqua; 
   box-sizing: border-box; 

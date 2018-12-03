@@ -1,14 +1,16 @@
 import React from 'react'; 
-import {shallow, mount} from 'enzyme'; 
+import {shallow} from 'enzyme'; 
 import Card from '.Card.js'; 
 
 describe('Card', () => {
+  let wrapper; 
+
   beforeEach(() => {
-    const wrapper = shallow(<Card />)
-    test('should match the snapshot with all data passed in correctly')
+     wrapper = shallow(<Card />)
 
-    const mockCard = {
+    test('matches snapshot', () => {
 
-    }
+      expect(wrapper).toMatchSnapshot()
+    })
   })
 }); 

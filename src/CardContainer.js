@@ -3,9 +3,10 @@ import './CardContainer.css';
 import Card from './Card.js'; 
 import PropTypes from 'prop-types'; 
 
-const CardContainer = ({findAllMatches, filteredDistricts, compareDistricts, selectedCards}) => {
+const CardContainer = ({findAllMatches, filteredDistricts, selectDistrict, selectedCards}) => {
   const data = findAllMatches();
-  const allDistricts = data.map(district => (<Card {...district} compareDistricts={compareDistricts} selectedCards={selectedCards}/>))
+  const allDistricts = data.map(district => (<Card {...district} selectDistrict={selectDistrict} selectedCards={selectedCards}
+  key={Date.now()}/>))
   const searchedDistricts = filteredDistricts.map(search => (<Card{...search}/>))
   
   if (searchedDistricts.length >= 1) {
@@ -25,7 +26,10 @@ const CardContainer = ({findAllMatches, filteredDistricts, compareDistricts, sel
 }
 
 CardContainer.propTypes = {
-  findAllMatches: PropTypes.func.isRequired
+  findAllMatches: PropTypes.func.isRequired,
+  filteredDistricts: PropTypes.array.isRequired,
+  selectDistrict: PropTypes.func.isRequired, 
+  selectedCards: PropTypes.func.isRequired
 }
 
 export default CardContainer; 

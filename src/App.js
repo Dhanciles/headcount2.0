@@ -25,22 +25,24 @@ class App extends Component {
   }
 
 
-  compareDistricts = (location) => {
+  selectDistrict = (location) => {
     const {findAllMatches} = this.state.repostitory
     let selectedCards; 
     const currentCard = findAllMatches(location)
-    if (this.state.selectedCards.length > 1) {
-      selectedCards = this.state.selectedCards.filter(selected => selected.location !== location )
+    if (!currentCard.selected && this.state.selectedCards.length < 2) {
+      currentCard.selected = true; 
+        selectedCards = [...this.state.selectedCards, ...currentCard]
       this.setState({
         selectedCards
       })
     } else {
-      selectedCards = [...this.state.selectedCards, ...currentCard]
+      currentCard.selected = false; 
+      selectedCards = this.state.selectedCards.filter(selectedCard => selectedCard.location !== currentCard.location)
       this.setState({
         selectedCards
       })
     }
-  }
+    }
 
   render() {
     const { findAllMatches } = this.state.repostitory
@@ -51,7 +53,7 @@ class App extends Component {
         <CardContainer 
         findAllMatches={findAllMatches} 
         filteredDistricts={this.state.filteredDistricts}
-        compareDistricts={this.compareDistricts}
+        selectDistrict={this.selectDistrict}
         selectedCards={this.state.selectedCards}/>
       </div>
 
